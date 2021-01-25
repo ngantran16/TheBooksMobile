@@ -1,6 +1,7 @@
 // In index.js of a new project
 import { Navigation } from 'react-native-navigation';
-import HomeScreen from './screens/App/HomeScreen';
+import HomeScreen from './screens/App/Home';
+import Login from './screens/Authentication/Login';
 // Home screen declaration
 
 HomeScreen.options = {
@@ -15,7 +16,7 @@ HomeScreen.options = {
 
 //register screen
 Navigation.registerComponent('Home', () => HomeScreen);
-
+Navigation.registerComponent('Login', () => Login);
 Navigation.setDefaultOptions({
   statusBar: {
     backgroundColor: 'white',

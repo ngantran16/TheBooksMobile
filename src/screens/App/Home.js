@@ -2,15 +2,14 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import NavigationUtils from '../../navigation/NavigationUtils';
-
 const HomeScreen = (props) => {
   return (
     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
       <TouchableOpacity
         style={{ height: 50, width: 100, margin: 20, backgroundColor: 'yellow' }}
-        onPress={() => NavigationUtils.push(props.componentId, 'AppHome', 'Application')}
+        onPress={() => NavigationUtils.push(props.componentId, 'Login', 'Login')}
       >
-        <Text>Application</Text>
+        <Text>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={{ height: 50, width: 100, backgroundColor: 'green' }}
@@ -18,6 +17,7 @@ const HomeScreen = (props) => {
       >
         <Text>Search Filter</Text>
       </TouchableOpacity>
+      {/* <Icon name="code" size={28} /> */}
     </View>
   );
 };

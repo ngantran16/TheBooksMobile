@@ -9,7 +9,7 @@ import reduxPersist from '../config/ReduxPersist';
 import rootSaga from './sagas';
 import rootReducer from './reducers';
 
-export default onComplete => {
+export default (onComplete) => {
   /* ------------- Redux Configuration ------------- */
 
   const middleware = [];

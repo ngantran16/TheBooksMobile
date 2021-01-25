@@ -7,18 +7,15 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Login from '../screens/Login';
 import Home from '../screens/Home';
 import SignUp from '../screens/Login/SignUp';
-import ForgotPassword from '../screens/Login/ForgotPassword';
-
 const SCREENS_WITH_REDUX = {
   Login,
   Home,
   SignUp,
-  ForgotPassword,
 };
 const SCREENS = {};
 
 function registerScreens(store, persistor) {
-  const PersistProvider = props => {
+  const PersistProvider = (props) => {
     const { children } = props;
 
     return (
@@ -30,7 +27,7 @@ function registerScreens(store, persistor) {
     );
   };
 
-  Object.keys(SCREENS_WITH_REDUX).map(screenName => {
+  Object.keys(SCREENS_WITH_REDUX).map((screenName) => {
     Navigation.registerComponentWithRedux(
       screenName,
       () => gestureHandlerRootHOC(SCREENS_WITH_REDUX[screenName]),
@@ -39,7 +36,7 @@ function registerScreens(store, persistor) {
     );
   });
 
-  Object.keys(SCREENS).map(screenName => {
+  Object.keys(SCREENS).map((screenName) => {
     Navigation.registerComponent(screenName, () => SCREENS[screenName]);
   });
 }

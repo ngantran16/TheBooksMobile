@@ -19,7 +19,7 @@ export function convertArrToObj(arr, key) {
 }
 
 export const arrayRemove = (arr, value) => {
-  return arr.filter(function(element) {
+  return arr.filter(function (element) {
     return element !== value;
   });
 };
@@ -73,29 +73,29 @@ export const validateForm = (validateType, text) => {
 };
 
 // Validate fields
-export const validateField = name => {
+export const validateField = (name) => {
   return name !== '';
 };
 
-export const validateEmail = email => {
+export const validateEmail = (email) => {
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 };
 
-export const validatePassword = text => {
+export const validatePassword = (text) => {
   return text?.length > 5;
 };
 
-export const checkPhoneType = keyboardType => {
+export const checkPhoneType = (keyboardType) => {
   return keyboardType == 'phone-pad';
 };
-export const validatePhone = phone => {
+export const validatePhone = (phone) => {
   const regex1 = /^[0-9#+*.,]+$/;
   const regex2 = /^0(1\d{9}|8\d{8}|9\d{8})$/;
   return regex1.test(phone) || regex2.test(phone);
 };
 
-export const checkTypeNumber = keyboardType => {
+export const checkTypeNumber = (keyboardType) => {
   return (
     keyboardType == 'numeric' ||
     keyboardType == 'phone-pad' ||
@@ -103,26 +103,26 @@ export const checkTypeNumber = keyboardType => {
     keyboardType == 'decimal-pad'
   );
 };
-export const validateNumber = number => {
+export const validateNumber = (number) => {
   const regex1 = /^[-+]?[0-9]*\.?[0-9]?[0-9]?$/;
   const regex2 = /^[-+]?[0-9]*\,?[0-9]?[0-9]?$/;
   const regex3 = /^0(1\d{9}|8\d{8}|9\d{8})$/;
   return regex1.test(number) || regex2.test(number) || regex3.test(number);
 };
 
-export const formatDate = date => {
+export const formatDate = (date) => {
   return moment(date).format('DD/MM/YYYY') === moment().format('DD/MM/YYYY')
     ? 'Today'
     : moment(date).format('MMM DD');
 };
 
-export const validateName = name => {
+export const validateName = (name) => {
   const re = /^[^0-9 *&^$#@!(){}\[\]\\//]+[^0-9*&^$#@!(){}\[\]\\//]+$/;
   return re.test(name);
 };
 
 // change alias
-export const change_alias = alias => {
+export const change_alias = (alias) => {
   let str = alias;
   str = str.toLowerCase();
   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ {2}|ặ|ẳ|ẵ/g, 'a');
@@ -145,10 +145,10 @@ export const change_alias = alias => {
 export const getUserPosition = () => {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
-      position => {
+      (position) => {
         resolve(position);
       },
-      error => {
+      (error) => {
         reject(error);
       },
     );
@@ -164,7 +164,7 @@ export const formatMoney = (number, n = 2, x = 3) => {
 };
 
 // check image url
-export const checkURLImg = url => {
+export const checkURLImg = (url) => {
   return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
 };
 
@@ -175,14 +175,14 @@ export const openURL = (url, isWeb) => {
     newUrl = `http://${newUrl}`;
   }
   Linking.canOpenURL(newUrl)
-    .then(supported => {
+    .then((supported) => {
       if (!supported) {
         // console.log('Can\'t handle url: ' + url);
       } else {
         return Linking.openURL(newUrl);
       }
     })
-    .catch(err => {
+    .catch((err) => {
       // console.error('An error occurred', err)
     });
 };
@@ -216,7 +216,7 @@ export const isIOS = Platform.OS === 'ios';
 export const hexToRGBA = (hex, opacity) => {
   return `rgba(${(hex = hex.replace('#', ''))
     .match(new RegExp(`(.{${hex.length / 3}})`, 'g'))
-    .map(l => {
+    .map((l) => {
       return parseInt(hex.length % 2 ? l + l : l, 16);
     })
     .concat(opacity || 1)
@@ -224,10 +224,10 @@ export const hexToRGBA = (hex, opacity) => {
 };
 
 // convert hex to rgb
-export const hexToRGB = hex => {
+export const hexToRGB = (hex) => {
   return `rgba(${(hex = hex.replace('#', ''))
     .match(new RegExp(`(.{${hex.length / 3}})`, 'g'))
-    .map(l => {
+    .map((l) => {
       return parseInt(hex.length % 2 ? l + l : l, 16);
     })
     .join(',')})`;
@@ -235,7 +235,7 @@ export const hexToRGB = hex => {
 
 // convert rgb to hex
 export const rgbToHex = (r, g, b) =>
-  `#${[r, g, b].map(x => x.toString(16).padStart(2, '0')).join('')}`;
+  `#${[r, g, b].map((x) => x.toString(16).padStart(2, '0')).join('')}`;
 
 export function formatCurrency(value, currency = 'CAD') {
   if (value) {
@@ -256,7 +256,7 @@ export const getDefaultBox = (data, userLocation) => {
     }
     let box = data[0];
     let haveDefaultBox = false;
-    _.map(data, item => {
+    _.map(data, (item) => {
       if (item?.isMyBox) {
         box = item;
         haveDefaultBox = true;
@@ -266,7 +266,7 @@ export const getDefaultBox = (data, userLocation) => {
       return box;
     }
     if (userLocation) {
-      _.map(data, item => {
+      _.map(data, (item) => {
         newBoxes.push({
           ...item,
           ...{
@@ -294,6 +294,6 @@ const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
   return d;
 };
 
-const deg2rad = deg => {
+const deg2rad = (deg) => {
   return deg * (Math.PI / 180);
 };
