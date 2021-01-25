@@ -1,6 +1,7 @@
 // In index.js of a new project
 import { Navigation } from 'react-native-navigation';
 import HomeScreen from './screens/App/HomeScreen';
+import Introduction from './screens/Intro';
 // Home screen declaration
 
 HomeScreen.options = {
@@ -15,6 +16,7 @@ HomeScreen.options = {
 
 //register screen
 Navigation.registerComponent('Home', () => HomeScreen);
+Navigation.registerComponent('Introduction', () => Introduction);
 
 Navigation.setDefaultOptions({
   statusBar: {

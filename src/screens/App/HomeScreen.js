@@ -7,16 +7,17 @@ const HomeScreen = (props) => {
   return (
     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
       <TouchableOpacity
-        style={{ height: 50, width: 100, margin: 20, backgroundColor: 'yellow' }}
-        onPress={() => NavigationUtils.push(props.componentId, 'AppHome', 'Application')}
+        style={{
+          height: 50,
+          width: 100,
+          backgroundColor: 'pink',
+          marginTop: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        onPress={() => NavigationUtils.push(props.componentId, 'Introduction', 'Introduction')}
       >
-        <Text>Application</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={{ height: 50, width: 100, backgroundColor: 'green' }}
-        onPress={() => NavigationUtils.push(props.componentId, 'SearchFilter', 'Search Filter')}
-      >
-        <Text>Search Filter</Text>
+        <Text>Introduction</Text>
       </TouchableOpacity>
     </View>
   );
