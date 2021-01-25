@@ -18,7 +18,19 @@ const HomeScreen = (props) => {
         onPress={() => NavigationUtils.push(props.componentId, 'Introduction', 'Introduction')}
       >
         <Text>Introduction</Text>
-
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          height: 50,
+          width: 100,
+          backgroundColor: 'yellow',
+          marginTop: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        onPress={Root.main}
+      >
+        <Text>Introduction</Text>
       </TouchableOpacity>
     </View>
   );
