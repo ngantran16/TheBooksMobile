@@ -2,7 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import NavigationUtils from '../../navigation/NavigationUtils';
-
+import Root from '../../navigation/Root';
 const HomeScreen = (props) => {
   return (
     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -18,6 +18,7 @@ const HomeScreen = (props) => {
         onPress={() => NavigationUtils.push(props.componentId, 'Introduction', 'Introduction')}
       >
         <Text>Introduction</Text>
+
       </TouchableOpacity>
     </View>
   );

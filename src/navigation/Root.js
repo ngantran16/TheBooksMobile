@@ -28,7 +28,7 @@ const main = () => {
         children: [
           {
             component: {
-              name: 'Home',
+              name: 'HomePage',
               options: {
                 topBar: {
                   visible: false,
