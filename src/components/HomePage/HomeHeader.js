@@ -1,14 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
+import Icon from 'react-native-vector-icons/thebook-appicon';
+import Colors from '../../themes/Colors';
+import Fonts from '../../themes/Fonts';
 const HomeHeader = () => {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Hung</Text>
+        <Icon size={Fonts.size.s16} name="ic-menu" color={Colors.blackIcon} />
       </View>
       <View style={styles.searchContainer}>
-        <Text>Hung</Text>
+        <Icon size={Fonts.size.s16} name="ic-search" color={Colors.blackIcon} />
       </View>
     </View>
   );
