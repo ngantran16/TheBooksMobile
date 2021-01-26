@@ -23,6 +23,19 @@ const HomeScreen = (props) => {
         style={{
           height: 50,
           width: 100,
+          backgroundColor: 'pink',
+          marginTop: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        onPress={() => NavigationUtils.push(props.componentId, 'Filter', 'Filter')}
+      >
+        <Text>Introduction</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          height: 50,
+          width: 100,
           backgroundColor: 'yellow',
           marginTop: 10,
           justifyContent: 'center',
