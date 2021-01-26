@@ -17,6 +17,7 @@
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-navigation": "^7.8.4",
+    "react-native-ratings": "^7.3.0",
     "react-native-swiper": "^1.6.0",
     "react-native-swiper-flatlist": "^3.0.13",
     "react-native-vector-icons": "^8.0.0"

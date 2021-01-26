@@ -2,20 +2,16 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import Fonts from '../../themes/Fonts';
 import Colors from '../../themes/Colors';
-import Icon from 'react-native-vector-icons/thebook-appicon';
+import IconStar from './IconStar';
 const HomeBookItem = ({ item }) => {
-  const getRating = () => {
-    console.log('sdsdasd' + item.rating);
-    for (let i = 0; i < item.rating; i++) {
-      getIconStar(Colors.primary);
-    }
-    for (let i = 0; i < 5 - item.rating; i++) {
-      getIconStar(Colors.greyAuthor);
-    }
-  };
-  const getIconStar = (color) => {
-    return <Icon size={7} name="star" color={Colors.primary} />;
-  };
+  var iconRatings = [];
+
+  for (let i = 0; i < item.rating; i++) {
+    iconRatings.push(<IconStar color={Colors.primary} />);
+  }
+  for (let i = 0; i < 5 - item.rating; i++) {
+    iconRatings.push(<IconStar color={Colors.greyAuthor} />);
+  }
   return (
     <View style={styles.container}>
       <View>
@@ -24,7 +20,7 @@ const HomeBookItem = ({ item }) => {
       <Text style={styles.txtNameBook}>{item.name}</Text>
       <Text style={styles.txtAuthor}>{item.author}</Text>
       <View style={styles.containerBottom}>
-        <View>{getRating()}</View>
+        <View style={styles.containerRating}>{iconRatings}</View>
         <Text style={styles.txtNumberBuyer}>{item.numberBuyer}</Text>
       </View>
     </View>
@@ -71,6 +67,10 @@ const styles = StyleSheet.create({
     marginTop: 2.2,
   },
   containerBottom: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  containerRating: {
     flexDirection: 'row',
   },
 });

@@ -1,8 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import HomeBookItem from './HomeBookItem';
 import TypeHeader from './TypeHeader';
-import Icon from 'react-native-vector-icons/thebook-appicon';
 const Type = ({ title }) => {
   const listBooks = [
     {
@@ -11,7 +10,7 @@ const Type = ({ title }) => {
         'https://media.wired.com/photos/5be4cd03db23f3775e466767/125:94/w_2375,h_1786,c_limit/books-521812297.jpg',
       name: 'Để con được ốm',
       author: 'Nguyễn Trí Đoàn',
-      rating: 4,
+      rating: 3,
       numberBuyer: 12323,
     },
     {
@@ -47,7 +46,7 @@ const Type = ({ title }) => {
         'https://media.wired.com/photos/5be4cd03db23f3775e466767/125:94/w_2375,h_1786,c_limit/books-521812297.jpg',
       name: 'Để con được ốm',
       author: 'Nguyễn Trí Đoàn',
-      rating: 4,
+      rating: 3,
       numberBuyer: 12323,
     },
     {
@@ -56,7 +55,7 @@ const Type = ({ title }) => {
         'https://media.wired.com/photos/5be4cd03db23f3775e466767/125:94/w_2375,h_1786,c_limit/books-521812297.jpg',
       name: 'Để con được ốm',
       author: 'Nguyễn Trí Đoàn',
-      rating: 4,
+      rating: 2,
       numberBuyer: 12323,
     },
     {
@@ -97,9 +96,9 @@ const Type = ({ title }) => {
 export default Type;
 
 const styles = StyleSheet.create({
-    container: {
-        marginBottom: 22,
-    },
+  container: {
+    marginBottom: 22,
+  },
   scvContainer: {
     marginTop: 8,
   },
