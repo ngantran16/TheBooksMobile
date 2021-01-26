@@ -4,7 +4,6 @@ import { startup } from '../AppRedux/actions';
 import { userLoginApi } from '../../api/auth';
 
 export function* userLoginSaga({ data }) {
-  console.log(data);
   try {
     const response = yield call(userLoginApi, data);
     const newResponse = {
@@ -15,10 +14,15 @@ export function* userLoginSaga({ data }) {
     yield put(startup());
   } catch (error) {
     console.log(error);
-    yield put(LoginActions.userLoginFailure(error));
+    yield put(LoginActions.userLoginFailure(error.data.data.message));
   }
 }
-
-const loginSagas = () => [takeLatest(LoginTypes.USER_LOGIN, userLoginSaga)];
+export function* userLogoutSaga() {
+  yield put(startup());
+}
+const loginSagas = () => [
+  takeLatest(LoginTypes.USER_LOGIN, userLoginSaga),
+  takeLatest(LoginTypes.USER_LOGOUT, userLogoutSaga),
+];
 
 export default loginSagas();

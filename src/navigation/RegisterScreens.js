@@ -3,10 +3,9 @@ import { Navigation } from 'react-native-navigation';
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-
-import Login from '../screens/Login';
-import Home from '../screens/Home';
-import SignUp from '../screens/Login/SignUp';
+import Home from '../screens/App/Home';
+import Login from '../screens/Authentication/Login';
+import SignUp from '../screens/Authentication/SignUp';
 const SCREENS_WITH_REDUX = {
   Login,
   Home,

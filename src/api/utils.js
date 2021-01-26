@@ -1,7 +1,5 @@
 import _ from 'lodash';
 import { Platform } from 'react-native';
-import Config from '../config/AppSetting';
-import DeviceInfo from 'react-native-device-info';
 
 import { store } from '../Setup';
 
@@ -93,7 +91,7 @@ function requestWrapper(method) {
     let url = _url;
     let data = _data;
     let params = _params;
-    url = Config.BASE_URL + url;
+    url = 'https://the-books-api-dev.enouvo.com' + url;
     if (method === 'GET') {
       // is it a GET?
       // GET doesn't have data
@@ -134,7 +132,6 @@ function requestWrapper(method) {
     }
 
     defaults.headers.Platform = Platform.OS === 'ios' ? 'ios' : 'android';
-    defaults.headers.VersionNo = `${DeviceInfo.getVersion()}.${DeviceInfo.getBuildNumber()}`;
     defaults.headers['Cache-Control'] = 'no-cache';
 
     // defaults.headers.Platform = Platform.OS === 'ios' ? 'ios' : 'android';

@@ -1,55 +1,47 @@
-// In index.js of a new project
 import { Navigation } from 'react-native-navigation';
-import HomeScreen from './screens/App/Home';
-import Login from './screens/Authentication/Login';
-// Home screen declaration
+import { Alert } from 'react-native';
+import { registerScreens } from './navigation/index';
+import configureStore from './redux/store';
+import { startup } from './redux/AppRedux/actions';
 
-HomeScreen.options = {
-  topBar: {
-    title: {
-      text: 'Home',
-    },
-  },
-};
+export let store = null;
 
-// Settings screen declaration - this is the screen we'll be pushing into the stack
+const App = () => {
+  const loadIntial = () => {
+    return Promise.all([loadStore()])
+      .then((response) => {
+        store = response[0];
 
-//register screen
-Navigation.registerComponent('Home', () => HomeScreen);
-Navigation.registerComponent('Login', () => Login);
-Navigation.setDefaultOptions({
-  statusBar: {
-    backgroundColor: 'white',
-  },
-  topBar: {
-    title: {
-      color: 'black',
-    },
-    backButton: {
-      color: 'black',
-    },
-    background: {
-      color: 'white',
-    },
-  },
-});
+        // Load finish here
+        store.dispatch(startup());
+      })
+      .catch((err) => {});
+  };
 
-// eslint-disable-next-line no-undef
-export default App = () => {
-  Navigation.events().registerAppLaunchedListener(async () => {
-    Navigation.setRoot({
-      root: {
-        stack: {
-          children: [
-            {
-              component: {
-                id: 'HomeScreen',
-                name: 'Home',
-              },
-            },
-          ],
-        },
-      },
+  const loadStore = async () => {
+    return new Promise((resolve) => {
+      configureStore((tempStore, persistor) => {
+        // configI18n(get(tempStore.getState(), 'app.language'));
+        registerScreens(tempStore, persistor);
+        resolve(tempStore, persistor);
+      });
     });
+  };
+
+  Navigation.events().registerAppLaunchedListener(async () => {
+    try {
+      await loadIntial();
+      Navigation.setDefaultOptions({
+        layout: {
+          backgroundColor: 'white',
+          orientation: ['portrait'], // An array of supported orientations
+        },
+      });
+    } catch (error) {
+      //
+      Alert.alert('Init unsuccessful', error.message);
+    }
   });
 };
+
+export default App;

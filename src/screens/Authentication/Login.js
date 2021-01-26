@@ -8,62 +8,53 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
-import { Navigation } from 'react-native-navigation';
-import NavigationUtils from '../../navigation/NavigationUtils';
 import Icon from 'react-native-vector-icons/thebook-appicon';
 import TextInputItem from '../../components/TextInputItem';
 import PasswordItem from '../../components/PasswordItem';
 import { useDispatch, useSelector } from 'react-redux';
 import LoginTypes from '../../redux/LoginRedux/actions';
-const Login = (props) => {
+import { NavigationUtils } from '../../navigation';
+const Login = () => {
   const [] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   let dataLogin = {
-    email: email,
+    grant_type: 'password',
+    username: email,
     password: password,
   };
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.login.loadingLogin);
   const isError = useSelector((state) => state.login.errorLogin);
   const onLogin = () => {
-    //console.log("Hello");
     dispatch(LoginTypes.userLogin(dataLogin));
+  };
+  const onSignUpHandel = () => {
+    NavigationUtils.push({ screen: 'SignUp', isTopBarEnable: false });
+  };
+  const onClose = () => {
+    NavigationUtils.pop();
   };
   return (
     <ScrollView style={styles.container}>
       <View style={styles.layoutTitle}>
+        <Icon name="ic-delete" size={24} style={{ marginTop: 4 }} onPress={onClose} />
         <Text style={styles.title}>Đăng nhập</Text>
       </View>
       <TextInputItem title="Email" ChangeText={(val) => setEmail(val)} />
       <PasswordItem
         title="Mật khẩu"
-        // imageClose=
-        // imageOpen={witness}
+        imageClose="ic-hide-password"
+        imageOpen="ic-show-password"
         onChangePass={(val) => setPassword(val)}
       />
-      {/* {isLoading && <ActivityIndicator size="large" color="#00ff00" />}
-      {isError && <Text style={{ color: 'red' }}>{isError}</Text>} */}
+      {isLoading && <ActivityIndicator size="large" color="#00ff00" />}
+      {isError && <Text style={{ color: 'red' }}>{isError}</Text>}
       <View style={styles.layoutButton}>
         <TouchableOpacity style={styles.loginButton} onPress={onLogin}>
           <Text style={styles.textSignUp}>Đăng nhập</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.signupButton}
-          onPress={() => {
-            Navigation.push(props.componentId, {
-              component: {
-                name: 'SignUp',
-                options: {
-                  topBar: {
-                    visible: false,
-                    height: 0,
-                  },
-                },
-              },
-            });
-          }}
-        >
+        <TouchableOpacity style={styles.signupButton} onPress={onSignUpHandel}>
           <Text>Đăng ký</Text>
         </TouchableOpacity>
       </View>

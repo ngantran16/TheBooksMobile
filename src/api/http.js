@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-import Config from '../config/AppSetting';
-
-const API_ROOT = 'https://the-books-api-dev.enouvo.com/swagger/';
+const API_ROOT = 'https://the-books-api-dev.enouvo.com';
 
 axios.defaults.baseURL = API_ROOT;
 axios.defaults.timeout = 15000;

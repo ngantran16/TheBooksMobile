@@ -21,7 +21,11 @@ const PasswordItem = (props) => {
           setShowPass(!isShowPassword);
         }}
       >
-        <Icon name={isShowPassword ? props.imageClose : props.imageOpen} />
+        {isShowPassword ? (
+          <Icon name={props.imageClose} size={24} />
+        ) : (
+          <Icon name={props.imageOpen} size={24} />
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
   showPassword: {
     position: 'absolute',
     right: 10,
-    top: 50,
+    top: 45,
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',

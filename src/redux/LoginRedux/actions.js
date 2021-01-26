@@ -6,14 +6,21 @@ export const LoginTypes = makeConstantCreator(
   'USER_LOGIN_FAILURE',
   'USER_LOGOUT',
 );
-
+//LOGIN
 const userLogin = (data) => makeActionCreator(LoginTypes.USER_LOGIN, { data });
 const userLoginSuccess = (response) =>
   makeActionCreator(LoginTypes.USER_LOGIN_SUCCESS, { response });
 const userLoginFailure = (error) => makeActionCreator(LoginTypes.USER_LOGIN_FAILURE, { error });
+// CHANGE PASS
+//SIGNUP
+// PROFILE
+// EDIT PROFILE
+// LOGOUT
+const userLogout = () => makeActionCreator(LoginTypes.USER_LOGOUT);
 
 export default {
   userLogin,
   userLoginSuccess,
   userLoginFailure,
+  userLogout,
 };
