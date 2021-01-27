@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-undef */
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
 import Colors from '../../themes/Colors';
 import Images from '../../themes/Images';

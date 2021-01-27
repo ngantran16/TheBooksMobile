@@ -34,7 +34,6 @@ const Cart = () => {
     },
   ];
 
-
   const [showAlert, setShowAlert] = useState(false);
   return (
     <View style={styles.mainContainer}>
@@ -54,20 +53,20 @@ const Cart = () => {
         </TouchableOpacity>
       </View>
       <AwesomeAlert
-          show={showAlert}
-          showProgress={false}
-          message="Sách đã được đặt thành công
+        show={showAlert}
+        showProgress={false}
+        message="Sách đã được đặt thành công
 Bạn có thể theo dõi tại mục cá nhân"
-          closeOnTouchOutside={false}
-          closeOnHardwareBackPress={false}
-          showConfirmButton={true}
-          confirmText="Cám ơn"
-          confirmButtonColor={Colors.primary}
-          onConfirmPressed={() => setShowAlert(false)}
-          messageStyle = {{textAlign: 'center'}}
-          contentContainerStyle = {styles.alertContainer}
-          confirmButtonStyle = {styles.confirmBtn}
-        />
+        closeOnTouchOutside={false}
+        closeOnHardwareBackPress={false}
+        showConfirmButton={true}
+        confirmText="Cám ơn"
+        confirmButtonColor={Colors.primary}
+        onConfirmPressed={() => setShowAlert(false)}
+        messageStyle={{ textAlign: 'center' }}
+        contentContainerStyle={styles.alertContainer}
+        confirmButtonStyle={styles.confirmBtn}
+      />
     </View>
   );
 };
@@ -107,14 +106,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.primary,
   },
-  alertContainer: { 
-    width: '100%' 
+  alertContainer: {
+    width: '100%',
   },
   confirmBtn: {
-    width: 105, 
-    height: 30, 
-    justifyContent: 'center', 
-    alignItems: 'center'
+    width: 105,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-
 });

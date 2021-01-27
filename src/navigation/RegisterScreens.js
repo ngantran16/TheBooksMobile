@@ -18,7 +18,7 @@ const SCREENS_WITH_REDUX = {
 const SCREENS = {};
 
 function registerScreens(store, persistor) {
-  const PersistProvider = props => {
+  const PersistProvider = (props) => {
     const { children } = props;
 
     return (
@@ -30,7 +30,7 @@ function registerScreens(store, persistor) {
     );
   };
 
-  Object.keys(SCREENS_WITH_REDUX).map(screenName => {
+  Object.keys(SCREENS_WITH_REDUX).map((screenName) => {
     Navigation.registerComponentWithRedux(
       screenName,
       () => gestureHandlerRootHOC(SCREENS_WITH_REDUX[screenName]),
@@ -39,7 +39,7 @@ function registerScreens(store, persistor) {
     );
   });
 
-  Object.keys(SCREENS).map(screenName => {
+  Object.keys(SCREENS).map((screenName) => {
     Navigation.registerComponent(screenName, () => SCREENS[screenName]);
   });
 }
