@@ -4,6 +4,5 @@ import loginSagas from './LoginRedux/sagas';
 import signUpSagas from './SignUpRedux/sagas';
 
 export default function* root() {
-  yield all([...appSagas, ...loginSagas]);
-  yield all([...appSagas, ...signUpSagas]);
+  yield all([...appSagas, ...loginSagas, ...signUpSagas]);
 }

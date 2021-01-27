@@ -16,7 +16,6 @@ import { NavigationUtils } from '../../navigation';
 import Icon from 'react-native-vector-icons/thebook-appicon';
 import SignUpTypes from '../../redux/SignUpRedux/actions';
 import LoginTypes from '../../redux/LoginRedux/actions';
-import { AlertError } from '../../utils/AlertError';
 import {
   validateEmail,
   validateField,

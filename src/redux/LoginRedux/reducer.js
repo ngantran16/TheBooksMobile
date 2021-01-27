@@ -3,7 +3,7 @@ import { makeReducerCreator } from '../../utils/ReduxUtils';
 import { LoginTypes } from '../LoginRedux/actions';
 
 export const INITIAL_STATE = Immutable({
-  loadingLogin: false,
+  loadingLogin: null,
   loginResponse: null,
   token: null,
   loginType: '',
@@ -29,7 +29,7 @@ export const userLoginSuccess = (state, { response }) =>
   });
 export const userLoginFailure = (state, { error }) =>
   state.merge({ loadingLogin: false, errorLogin: error, token: null });
-export const userLogout = (state) => state.merge({ token: null });
+export const userLogout = (state) => state.merge({ token: null, loadingLogin: false });
 const reducer = makeReducerCreator(INITIAL_STATE, {
   [LoginTypes.USER_LOGIN]: userLogin,
   [LoginTypes.USER_LOGIN_SUCCESS]: userLoginSuccess,

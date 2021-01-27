@@ -6,6 +6,7 @@ import { userLoginApi } from '../../api/auth';
 export function* userLoginSaga({ data }) {
   try {
     const response = yield call(userLoginApi, data);
+    console.log(response);
     const newResponse = {
       data: response.data,
       token: response.data.token,
