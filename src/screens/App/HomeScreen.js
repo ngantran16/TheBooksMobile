@@ -71,6 +71,19 @@ const HomeScreen = (props) => {
       >
         <Text>ViewAll</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          height: 50,
+          width: 100,
+          backgroundColor: 'red',
+          marginTop: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        onPress={() => NavigationUtils.push(props.componentId, 'Cart', 'Cart')}
+      >
+        <Text>Cart</Text>
+      </TouchableOpacity>
     </View>
   );
 };
