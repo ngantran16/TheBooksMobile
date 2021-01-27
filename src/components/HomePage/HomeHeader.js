@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/thebook-appicon';
-import NavigationUtils from '../../navigation/NavigationUtils';
 import Colors from '../../themes/Colors';
 import Fonts from '../../themes/Fonts';
 const HomeHeader = () => {

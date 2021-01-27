@@ -4,12 +4,19 @@ import { persistReducer, persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
 
-import config from '../config/DebugSettings';
 import reduxPersist from '../config/ReduxPersist';
 import rootSaga from './sagas';
 import rootReducer from './reducers';
 
-export default onComplete => {
+const config = {
+  useFixtures: false,
+  ezLogin: false,
+  yellowBox: __DEV__,
+  reduxLogging: __DEV__,
+  includeExamples: __DEV__,
+};
+
+export default (onComplete) => {
   /* ------------- Redux Configuration ------------- */
 
   const middleware = [];
