@@ -36,7 +36,7 @@ const HomeScreen = (props) => {
         style={{
           height: 50,
           width: 100,
-          backgroundColor: 'orange',
+          backgroundColor: 'blue',
           marginTop: 10,
           justifyContent: 'center',
           alignItems: 'center',
@@ -44,6 +44,45 @@ const HomeScreen = (props) => {
         onPress={() => NavigationUtils.push(props.componentId, 'Detail', 'Detail')}
       >
         <Text>Detail</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          height: 50,
+          width: 100,
+          backgroundColor: 'green',
+          marginTop: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        onPress={() => NavigationUtils.push(props.componentId, 'SearchPage', 'SearchPage')}
+      >
+        <Text>SearchPage</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          height: 50,
+          width: 100,
+          backgroundColor: 'pink',
+          marginTop: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        onPress={() => NavigationUtils.push(props.componentId, 'ViewAll', 'ViewAll')}
+      >
+        <Text>ViewAll</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          height: 50,
+          width: 100,
+          backgroundColor: 'red',
+          marginTop: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        onPress={() => NavigationUtils.push(props.componentId, 'Cart', 'Cart')}
+      >
+        <Text>Cart</Text>
       </TouchableOpacity>
     </View>
   );

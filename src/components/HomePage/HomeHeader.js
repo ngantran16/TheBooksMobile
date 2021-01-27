@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/thebook-appicon';
+import NavigationUtils from '../../navigation/NavigationUtils';
 import Colors from '../../themes/Colors';
 import Fonts from '../../themes/Fonts';
 const HomeHeader = () => {
@@ -9,9 +10,9 @@ const HomeHeader = () => {
       <View>
         <Icon size={Fonts.size.s16} name="ic-menu" color={Colors.blackIcon} />
       </View>
-      <View style={styles.searchContainer}>
+      <TouchableOpacity style={styles.searchContainer}>
         <Icon size={Fonts.size.s16} name="ic-search" color={Colors.blackIcon} />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

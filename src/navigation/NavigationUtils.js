@@ -8,6 +8,7 @@ const push = (componentId, screen, title) => {
       name: screen,
       options: {
         topBar: {
+          visible: false,
           title: {
             text: title,
           },
