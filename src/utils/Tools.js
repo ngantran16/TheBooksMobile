@@ -1,6 +1,5 @@
-import moment from 'moment';
-import 'moment-precise-range-plugin';
-import { getDistance } from '../utils/Geo';
+// import 'moment-precise-range-plugin';
+// import { getDistance } from '../utils/Geo';
 
 import _ from 'lodash';
 // import DeviceInfo from 'react-native-device-info';
@@ -24,27 +23,27 @@ export const arrayRemove = (arr, value) => {
   });
 };
 
-export const calculateRange = (startDate, endDate) => {
-  if (startDate || endDate) {
-    const { years, months, days } = moment.preciseDiff(startDate, endDate, true);
+// export const calculateRange = (startDate, endDate) => {
+//   if (startDate || endDate) {
+//     const { years, months, days } = moment.preciseDiff(startDate, endDate, true);
 
-    let rangeText;
+//     let rangeText;
 
-    if (years === 0) {
-      if (months === 0) {
-        rangeText = `${days}D`;
-      } else {
-        rangeText = `${months}M ${days}D`;
-      }
-    } else {
-      rangeText = `${years}Y ${months}M ${days}D`;
-    }
+//     if (years === 0) {
+//       if (months === 0) {
+//         rangeText = `${days}D`;
+//       } else {
+//         rangeText = `${months}M ${days}D`;
+//       }
+//     } else {
+//       rangeText = `${years}Y ${months}M ${days}D`;
+//     }
 
-    return { years, months, days, rangeText };
-  }
+//     return { years, months, days, rangeText };
+//   }
 
-  return '0D';
-};
+//   return '0D';
+// };
 
 export const updateDataForList = (list, newData) => {
   let tmpList = [...list];
@@ -110,11 +109,11 @@ export const validateNumber = (number) => {
   return regex1.test(number) || regex2.test(number) || regex3.test(number);
 };
 
-export const formatDate = (date) => {
-  return moment(date).format('DD/MM/YYYY') === moment().format('DD/MM/YYYY')
-    ? 'Today'
-    : moment(date).format('MMM DD');
-};
+// export const formatDate = (date) => {
+//   return moment(date).format('DD/MM/YYYY') === moment().format('DD/MM/YYYY')
+//     ? 'Today'
+//     : moment(date).format('MMM DD');
+// };
 
 export const validateName = (name) => {
   const re = /^[^0-9 *&^$#@!(){}\[\]\\//]+[^0-9*&^$#@!(){}\[\]\\//]+$/;
@@ -188,23 +187,23 @@ export const openURL = (url, isWeb) => {
 };
 
 // format date to vietnamese
-export function formatDateToVietnamese(date) {
-  moment.locale('vi');
-  const now = moment();
-  const dateParams = moment(new Date(date));
-  const diffDays = now.diff(dateParams, 'days');
-  const diffYears = now.diff(dateParams, 'years');
-  if (diffDays === 0) {
-    return dateParams.fromNow();
-  }
-  if (diffDays === 1) {
-    return dateParams.format('[Hôm qua lúc] HH:mm');
-  }
-  if (diffYears === 0) {
-    return dateParams.format('DD/MM [lúc ]HH:mm');
-  }
-  return dateParams.format('DD/MM/YYYY');
-}
+// export function formatDateToVietnamese(date) {
+//   moment.locale('vi');
+//   const now = moment();
+//   const dateParams = moment(new Date(date));
+//   const diffDays = now.diff(dateParams, 'days');
+//   const diffYears = now.diff(dateParams, 'years');
+//   if (diffDays === 0) {
+//     return dateParams.fromNow();
+//   }
+//   if (diffDays === 1) {
+//     return dateParams.format('[Hôm qua lúc] HH:mm');
+//   }
+//   if (diffYears === 0) {
+//     return dateParams.format('DD/MM [lúc ]HH:mm');
+//   }
+//   return dateParams.format('DD/MM/YYYY');
+// }
 
 // check if device has notch or not
 // export const hasNotch = DeviceInfo.hasNotch();
@@ -246,41 +245,41 @@ export function formatCurrency(value, currency = 'CAD') {
   return `${currency} 0.00`;
 }
 
-export const getDefaultBox = (data, userLocation) => {
-  let newBoxes = [];
-  // const userLocation = { latitude: 16.044047, longitude: 108.21158 };
+// export const getDefaultBox = (data, userLocation) => {
+//   let newBoxes = [];
+//   // const userLocation = { latitude: 16.044047, longitude: 108.21158 };
 
-  if (data && data.length > 0) {
-    if (data.length === 1) {
-      return data[0];
-    }
-    let box = data[0];
-    let haveDefaultBox = false;
-    _.map(data, (item) => {
-      if (item?.isMyBox) {
-        box = item;
-        haveDefaultBox = true;
-      }
-    });
-    if (haveDefaultBox) {
-      return box;
-    }
-    if (userLocation) {
-      _.map(data, (item) => {
-        newBoxes.push({
-          ...item,
-          ...{
-            distance: getDistance(item, userLocation),
-          },
-        });
-      });
-      return _.orderBy(newBoxes, 'distance', 'asc')[0];
-    }
-    return box;
-  } else {
-    return null;
-  }
-};
+//   if (data && data.length > 0) {
+//     if (data.length === 1) {
+//       return data[0];
+//     }
+//     let box = data[0];
+//     let haveDefaultBox = false;
+//     _.map(data, (item) => {
+//       if (item?.isMyBox) {
+//         box = item;
+//         haveDefaultBox = true;
+//       }
+//     });
+//     if (haveDefaultBox) {
+//       return box;
+//     }
+//     if (userLocation) {
+//       _.map(data, (item) => {
+//         newBoxes.push({
+//           ...item,
+//           ...{
+//             distance: getDistance(item, userLocation),
+//           },
+//         });
+//       });
+//       return _.orderBy(newBoxes, 'distance', 'asc')[0];
+//     }
+//     return box;
+//   } else {
+//     return null;
+//   }
+// };
 
 const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
   var R = 6371; // Radius of the earth in km

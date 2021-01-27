@@ -14,7 +14,7 @@ const reduxPersist = {
   key: 'root',
   storage: AsyncStorage,
   version: 1,
-  whitelist: ['app', 'login'],
+  whitelist: ['app', 'login', 'signup'],
   blacklist: [],
   stateReconciler: seamlessImmutableReconciler,
   transforms: [seamlessImmutableTransformCreator(transformerConfig)],

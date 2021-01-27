@@ -15,7 +15,15 @@ import PasswordItem from '../../components/PasswordItem';
 import { NavigationUtils } from '../../navigation';
 import Icon from 'react-native-vector-icons/thebook-appicon';
 import SignUpTypes from '../../redux/SignUpRedux/actions';
-
+import LoginTypes from '../../redux/LoginRedux/actions';
+import { AlertError } from '../../utils/AlertError';
+import {
+  validateEmail,
+  validateField,
+  validatePhone,
+  validatePassword,
+  validateName,
+} from '../../utils/Tools';
 const SignUp = (props) => {
   const [] = useState(true);
   const [firstName, setName] = useState('');
@@ -28,24 +36,36 @@ const SignUp = (props) => {
   const isLoading = useSelector((state) => state.signUp.loadingSignUp);
   const isError = useSelector((state) => state.signUp.errorSignUp);
   const onLogin = () => {
+    dispatch(LoginTypes.userLogout());
     NavigationUtils.push({ screen: 'Login', isTopBarEnable: false });
   };
+
   const onSignUp = () => {
-    if (email && firstName && lastName && password && confirm) {
-      if (confirm === password) {
-        let data = {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password,
-          phoneNumber: phone,
-          gender: 'Male',
-          address: '101B Lê Hữu Trác, Sơn Trà, Đà Nẵng',
-          birthDay: '2000-01-25',
-        };
-        dispatch(SignUpTypes.userSignUp(data));
+    if (email && firstName && lastName && password && confirm && phone) {
+      if (
+        validateEmail(email) ||
+        validatePhone(phone) ||
+        validateName(firstName) ||
+        validateName(lastName) ||
+        validatePassword(password)
+      ) {
+        if (confirm === password) {
+          let data = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            phoneNumber: phone,
+            gender: 'Male',
+            address: '101B Lê Hữu Trác, Sơn Trà, Đà Nẵng',
+            birthDay: '2000-01-25',
+          };
+          dispatch(SignUpTypes.userSignUp(data));
+        } else {
+          alert('Vui lòng xác nhận mật khẩu.');
+        }
       } else {
-        alert('Vui lòng xác nhận mật khẩu.');
+        alert('Vui lòng kiểm tra lại');
       }
     } else {
       alert('Vui lòng điền đủ thông tin');
@@ -57,8 +77,8 @@ const SignUp = (props) => {
         <Icon name="ic-delete" size={24} style={{ marginTop: 4 }} onPress={onLogin} />
         <Text style={styles.title}>Đăng ký</Text>
       </View>
-      <TextInputItem title="Tên" ChangeText={(val) => setName(val)} />
       <TextInputItem title="Họ" ChangeText={(val) => setLastName(val)} />
+      <TextInputItem title="Tên" ChangeText={(val) => setName(val)} />
       <TextInputItem title="Email" ChangeText={(val) => setEmail(val)} />
       <TextInputItem title="Số điện thoại" ChangeText={(val) => setPhone(val)} />
       <PasswordItem

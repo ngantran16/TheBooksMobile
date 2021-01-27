@@ -39,7 +39,7 @@ const Login = () => {
     <ScrollView style={styles.container}>
       <View style={styles.layoutTitle}>
         <Icon name="ic-delete" size={24} style={{ marginTop: 4 }} onPress={onClose} />
-        <Text style={styles.title}>Đăng nhập</Text>
+        <Text style={styles.title}> Đăng nhập </Text>
       </View>
       <TextInputItem title="Email" ChangeText={(val) => setEmail(val)} />
       <PasswordItem
@@ -49,16 +49,16 @@ const Login = () => {
         onChangePass={(val) => setPassword(val)}
       />
       {isLoading && <ActivityIndicator size="large" color="#00ff00" />}
-      {isError && <Text style={{ color: 'red' }}>{isError}</Text>}
+      {isError && <Text style={{ color: 'red' }}> {isError} </Text>}
       <View style={styles.layoutButton}>
         <TouchableOpacity style={styles.loginButton} onPress={onLogin}>
-          <Text style={styles.textSignUp}>Đăng nhập</Text>
+          <Text style={styles.textSignUp}> Đăng nhập </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.signupButton} onPress={onSignUpHandel}>
-          <Text>Đăng ký</Text>
+          <Text> Đăng ký </Text>
         </TouchableOpacity>
       </View>
-      <Text style={styles.policy}>Quên mật khẩu</Text>
+      <Text style={styles.policy}> Quên mật khẩu </Text>
     </ScrollView>
   );
 };

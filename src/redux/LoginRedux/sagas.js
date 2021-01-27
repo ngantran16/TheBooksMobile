@@ -14,7 +14,7 @@ export function* userLoginSaga({ data }) {
     yield put(startup());
   } catch (error) {
     console.log(error);
-    yield put(LoginActions.userLoginFailure(error.data.data.message));
+    yield put(LoginActions.userLoginFailure(error.data.message));
   }
 }
 export function* userLogoutSaga() {

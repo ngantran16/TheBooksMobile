@@ -16,6 +16,7 @@ export const userLogin = (state, { response }) =>
     loadingLogin: true,
     errorLogin: null,
     token: null,
+    loginResponse: null,
   });
 
 export const userLoginSuccess = (state, { response }) =>
@@ -27,7 +28,7 @@ export const userLoginSuccess = (state, { response }) =>
     errorLogin: null,
   });
 export const userLoginFailure = (state, { error }) =>
-  state.merge({ loadingLogin: false, errorLogin: error });
+  state.merge({ loadingLogin: false, errorLogin: error, token: null });
 export const userLogout = (state) => state.merge({ token: null });
 const reducer = makeReducerCreator(INITIAL_STATE, {
   [LoginTypes.USER_LOGIN]: userLogin,

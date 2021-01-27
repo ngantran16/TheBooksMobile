@@ -6,9 +6,10 @@ import { userSignUpApi } from '../../api/auth';
 export function* userSignUpSaga({ data }) {
   try {
     const response = yield call(userSignUpApi, data);
+    console.log(response);
     const newResponse = {
       data: response.data,
-      token: response.data.token,
+      token: response.data.data.token,
     };
     yield put(SignUpActions.userSignUpSuccess(newResponse));
     yield put(startup());
